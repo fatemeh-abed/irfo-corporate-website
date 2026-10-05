@@ -1,0 +1,121 @@
+/**
+ * Animation definitions — scroll reveal, modal, mobile menu, slider, and
+ * keyframe animations.
+ *
+ * All animations respect prefers-reduced-motion.
+ */
+
+/* ======================== Scroll Reveal ======================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 {
+  transition-delay: 0.1s;
+}
+.reveal-delay-2 {
+  transition-delay: 0.2s;
+}
+.reveal-delay-3 {
+  transition-delay: 0.3s;
+}
+
+/* ======================== Slider ======================== */
+
+.slide-enter {
+  opacity: 0;
+  transform: scale(1.03);
+}
+.slide-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 6s ease-out;
+}
+
+/* ======================== Modal ======================== */
+
+.modal-overlay {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+.modal-content {
+  animation: modalIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ======================== Mobile Menu ======================== */
+
+.mobile-menu-enter {
+  animation: menuSlideIn 0.3s ease-out forwards;
+}
+
+/* ======================== Keyframes ======================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes menuSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ======================== Reduced Motion ======================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .modal-overlay,
+  .modal-content,
+  .mobile-menu-enter {
+    animation: none;
+  }
+}

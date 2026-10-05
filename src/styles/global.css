@@ -1,0 +1,64 @@
+/**
+ * Global styles — base resets, typography, and reusable component classes.
+ *
+ * Tailwind directives are included here so utility classes are available
+ * throughout the project. Component-level classes use @apply for consistency.
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    font-family: var(--font-family);
+    @apply text-charcoal-900 bg-white;
+  }
+}
+
+@layer components {
+  /* Page container */
+  .container-irfo {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-sm bg-irfo-red-600 px-7 py-3 text-sm font-semibold tracking-wide text-white transition-all duration-300 hover:bg-irfo-red-700 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-irfo-red-500 focus-visible:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 rounded-sm border border-charcoal-300 bg-transparent px-7 py-3 text-sm font-semibold tracking-wide text-charcoal-700 transition-all duration-300 hover:border-charcoal-900 hover:text-charcoal-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-charcoal-400 focus-visible:ring-offset-2;
+  }
+
+  .btn-ghost-light {
+    @apply inline-flex items-center gap-2 rounded-sm border border-white/40 bg-transparent px-7 py-3 text-sm font-semibold tracking-wide text-white transition-all duration-300 hover:border-white hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent;
+  }
+
+  /* Section typography */
+  .section-eyebrow {
+    @apply mb-3 text-xs font-bold uppercase tracking-[0.25em] text-irfo-red-600;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold leading-tight text-charcoal-900 sm:text-4xl lg:text-[2.75rem];
+  }
+}
+
+/* Custom scrollbar for modal body */
+.modal-body-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-dark-300) transparent;
+}
+.modal-body-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-body-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-dark-300);
+  border-radius: 3px;
+}

@@ -1,0 +1,28 @@
+/**
+ * Responsive overrides and mobile-specific adjustments.
+ *
+ * Most responsive behavior is handled via Tailwind utility classes in
+ * component JSX. This file covers edge cases that are easier to express
+ * in plain CSS.
+ */
+
+/* Ensure hero never gets too small on short landscape phones */
+@media (max-height: 500px) and (orientation: landscape) {
+  #home {
+    min-height: 500px;
+  }
+}
+
+/* Prevent horizontal scroll from reveal transform */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* Smooth font rendering on high-DPI mobile displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
