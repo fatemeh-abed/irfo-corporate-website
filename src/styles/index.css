@@ -1,0 +1,11 @@
+/**
+ * Main stylesheet entry point.
+ *
+ * Import order matters: variables must load before global, which must load
+ * before animations and responsive overrides.
+ */
+
+@import './variables.css';
+@import './global.css';
+@import './animations.css';
+@import './responsive.css';
